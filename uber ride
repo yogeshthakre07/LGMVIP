@@ -1,0 +1,25 @@
+uber ride
+
+import pandas as pd 
+import numpy as np 
+import seaborn as sns 
+import matplotlib.pyplot as plt 
+df.read_csv("uber.csb")
+df.head() df.info()  df.columns
+df = df.drop(['Unnamed: 0', 'key'], axis= 1) 
+df.head() df.shape #To get the total (Rows,Columns) 
+df.dtypes #To get the type of each column df.info() 
+df.describe() #To get statistics of each columns 
+df.isnull().sum() 
+df['dropoff_latitude'].fillna(value=df['dropoff_latitude'].mean(),inplace = True) df['dropoff_longitude'].fillna(value=df['dropoff_longitude'].median(),inplace = True 
+df.isnull().sum() df.dtypes 
+df.pickup_datetime = pd.to_datetime(df.pickup_datetime, errors='coerce') 
+df.dtypes
+df= df.assign(hour = df.pickup_datetime.dt.hour,  
+day= df.pickup_datetime.dt.day,  
+month = df.pickup_datetime.dt.month,  
+year = df.pickup_datetime.dt.year,  
+dayofweek = df.pickup_datetime.dt.dayofweek) 
+df.head() 
+df = df.drop('pickup_datetime',axis=1) df.head() df.dtypes 
+df.plot(kind = "box",subplots = True,layout = (7,2),figsize=(15,20))
