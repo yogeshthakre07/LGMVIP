@@ -1,0 +1,22 @@
+k nearest neihjbors
+
+import numpy as np  import pandas as pd import math 
+import matplotlib.pyplot as plt import seaborn as sns  
+from sklearn.neighbors import KNeighborsClassifier from sklearn import metrics 
+from sklearn.model_selection import cross_val_score from sklearn.model_selection import KFold 
+%matplotlib inline 
+  
+location = 'diabetes.csv' f = pd.read_csv(location) data = pd.DataFrame(f) data.head
+
+cols_clean = ['Glucose','BloodPressure','SkinThickness','Insulin','BMI','Pedigree']  
+# with this function , i dealt with missing values and NaN values  for i in cols_clean: 
+    data[i] = data[i].replace(0,np.NaN)     cols_mean = int(data[i].mean(skipna=True))     data[i] = data[i].replace(np.NaN, cols_mean) data1 = data 
+data1.head().style.highlight_max(color="lightblue").highlight_min(color="red") 
+
+print(data1.describe()) 
+
+# for the purpose of simplicity and analysing the most relevent  data , we will sele
+# Glucose , Insulin and BMI 
+q_cols = ['Glucose','Insulin','BMI','Outcome'] 
+ 
+# defining variables and features for the dataset for splitting  df = data1[q_cols] print(df.head(2)) 
